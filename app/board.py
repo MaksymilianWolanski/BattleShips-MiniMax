@@ -36,7 +36,7 @@ class Board:
             self.grid[x][y] = "X"
             return "hit"
 
-        elif self.grid[x][y] == "~":
+        if self.grid[x][y] == "~":
             self.grid[x][y] = "O"
             return "miss"
 

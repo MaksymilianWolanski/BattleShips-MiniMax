@@ -1,59 +1,7 @@
 import random
 
-from board import Board
-
-
-def evaluate_move(board, x, y):
-    """
-    Prosta heurystyka Minimax.
-    AI preferuje pola obok trafień.
-    """
-
-    score = 0
-
-    directions = [
-        (-1, 0),
-        (1, 0),
-        (0, -1),
-        (0, 1)
-    ]
-
-    for dx, dy in directions:
-        nx = x + dx
-        ny = y + dy
-
-        if 0 <= nx < 5 and 0 <= ny < 5:
-            if board.grid[nx][ny] == "X":
-                score += 10
-
-    return score
-
-
-def minimax_ai_move(player_board):
-    best_score = -999
-    best_move = None
-
-    for i in range(5):
-        for j in range(5):
-
-            if player_board.grid[i][j] in ["O", "X"]:
-                continue
-
-            score = evaluate_move(player_board, i, j)
-
-            if score > best_score:
-                best_score = score
-                best_move = (i, j)
-
-    if best_move is None:
-        while True:
-            x = random.randint(0, 4)
-            y = random.randint(0, 4)
-
-            if player_board.grid[x][y] not in ["O", "X"]:
-                return x, y
-
-    return best_move
+from app.board import Board
+from app.minimax import minimax_ai_move
 
 
 def setup_player_board():
@@ -75,7 +23,7 @@ def setup_player_board():
             else:
                 print("Tam już coś jest!")
 
-        except:
+        except ValueError:
             print("Nieprawidłowe dane.")
 
     return board
@@ -110,14 +58,13 @@ def player_turn(ai_board):
                 print("Trafiony!")
                 break
 
-            elif result == "miss":
+            if result == "miss":
                 print("Pudło!")
                 break
 
-            else:
-                print("Już strzelałeś w to miejsce.")
+            print("Już strzelałeś w to miejsce.")
 
-        except:
+        except ValueError:
             print("Nieprawidłowe dane.")
 
 
@@ -144,7 +91,6 @@ def main():
     ai_board = setup_ai_board()
 
     while True:
-
         print("\n=== TWOJA PLANSZA ===")
         player_board.display()
 
