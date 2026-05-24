@@ -9,6 +9,7 @@ Celem projektu było stworzenie prostego AI do gry Statki.
 W projekcie wykorzystano uproszczoną wersję algorytmu Minimax dostosowaną do gry z niepełną informacją.
 
 AI:
+
 - analizuje możliwe ruchy,
 - wykorzystuje funkcję heurystyczną,
 - preferuje pola obok wcześniejszych trafień.
@@ -16,6 +17,7 @@ AI:
 ## Testy
 
 Sprawdzono:
+
 - poprawność ustawiania statków,
 - trafienia i pudła,
 - zakończenie gry,

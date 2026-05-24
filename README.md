@@ -10,6 +10,7 @@
 Projekt przedstawia prostą implementację gry Statki z AI wykorzystującym uproszczoną wersję algorytmu Minimax.
 
 AI:
+
 - analizuje możliwe ruchy,
 - wykorzystuje funkcję heurystyczną,
 - preferuje pola obok wcześniejszych trafień.
